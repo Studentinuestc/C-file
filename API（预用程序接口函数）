@@ -1,0 +1,8 @@
+Sleep()//－－－－让当前线程停下来
+WaitForSingleObject()//－－－－自己停下来，等待某个事情的发生
+GetTickCount()//－－－－嘀嗒
+QueryPerformanceFrequency(),QueryPerformanceCounter()//－－－－访问到精度更高的CPU数据
+timeGetSystemTime()//－－－－得到高精度时间
+PerformanceCounter()//－－－－效能计数器
+GetProcessorInfo()/SetThreadAffinityMask()//－－－－更好的控制CPU
+GetCPUTickCount()//－－－－CPU核心运行周期数

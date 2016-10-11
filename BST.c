@@ -63,10 +63,20 @@ int DeleteNode(BiTreeNode **t,int key)
             {
                 q=*p;
                 s=(*p)->lchild
-                
+                while(s->rchild)
+                {
+                    q=s;
+                    s=s->rchild;
+                }
+                (*p)->data=s->data;
+                if(q!=*p)
+                    (q)->rchild=s->lchild;
+                else
+                    (q)->lchild=s->lchild;
             }
         }
     }
+    return flag;
 }
 
 

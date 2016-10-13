@@ -83,3 +83,63 @@ void RightBalance(AVLNode **p)
           L_Rotate(p);
     }
 }
+
+int InsertAVL(AVLNode **t,DataType e,bool *taller)
+{
+    if(!(*t))
+    {
+        *t=new AVLNode();
+        (*t)->data=e;
+        (*t)->lchild=(*t)->rchild=null;
+        (*t)->bf=EH;
+    }
+    else
+    {
+        if(e.key==(*t)->data.key) return 0;
+        if(e.key<(*t)->data.key)
+        {
+            if(InsertAVL(&((*t)->lchild),e,taller)==0) return 0;
+            if(*taller)
+            {
+                switch((*t)->bf)
+                {
+                    case LH:
+                        LeftBalance(t);
+                        *taller=FALSE;
+                        break;
+                    case EH:
+                        (*t)->bf=LH;
+                        *taller=TRUE;
+                        break;
+                    case RH:
+                        (*t)->bf=EH;
+                        *taller=FALSE;
+                        break;
+                }
+            }
+        }
+        else
+        {
+            if(InsertAVL(&((*t)->rchild),e,taller)==0) return 0;
+            if(*taller)
+            {
+                switch((*t)->bf)
+                {
+                    case LH:
+                        (*t)->bf=EH;
+                        *taller=FALSE;
+                        break;
+                    case EH:
+                        (*t)->bf=RH;
+                        *taller=TRUE;
+                        break;
+                    case RH:
+                        RightBalance(t);
+                        *taller=0;
+                        break;
+                }
+            }
+        }
+    }
+    return 1;
+}

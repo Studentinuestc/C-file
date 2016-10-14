@@ -101,3 +101,21 @@ int BitreeLeaf(BiTree bt)
     if(bt->lchild==null&bt->rchild==null)return 1;
     return(BitreeLeaf(bt->lchild)+BitreeLeaf(bt->rchild));
 }
+
+int BitreeLeaf(BiTree bt)
+{
+    if(bt==null) return 0;
+    if(bt->lchild==null&&bf->rchild==null) return 1;
+    return (BitreeLeaf(bt->lchild)+BitreeLeaf(bt->rchild));
+}
+
+int BitreeDepth(BiTree bt)
+{
+    if(bt==null) return 0;
+    if(bt->lchild==null&&bt->rchild==null) return 1;
+    depthL=BitreeDepth(bt->lchild);
+    depthL=BitreeDepth(bt->rchild);
+    return 1+max(depthL,depthR);
+}
+
+／／max(左右子树深度，左子树最远距，右子树最远距)
